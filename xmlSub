@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sub"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nanaka.smily.SubActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="700dp" />
+
+        <ImageView
+            android:id="@+id/top"
+            android:layout_width="wrap_content"
+            android:layout_height="1100dp" />
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/capture_all"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/save"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:padding="@dimen/activity_vertical_margin"/>
+    <ImageButton
+        android:id="@+id/right"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/right"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:onClick="migi"
+        android:padding="16dp"/>
+    <ImageButton
+        android:id="@+id/left"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/left"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:onClick="hidari"
+        android:padding="16dp"/>
+
+
+    <HorizontalScrollView
+        android:id="@+id/HorizontalScrollView"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/borderred"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="a"
+                android:src="@drawable/borderred" />
+
+            <ImageButton
+                android:id="@+id/dotaka"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="b"
+                android:src="@drawable/dotaka" />
+
+            <ImageButton
+                android:id="@+id/guradeblue"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="c"
+                android:src="@drawable/guradeblue" />
+
+            <ImageButton
+                android:id="@+id/guradegreen"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="d"
+                android:src="@drawable/guradegreen" />
+
+            <ImageButton
+                android:id="@+id/guradeorenji"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="e"
+                android:src="@drawable/guradeorenji" />
+
+            <ImageButton
+                android:id="@+id/guradepink"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="f"
+                android:src="@drawable/guradepink" />
+
+            <ImageButton
+                android:id="@+id/hana"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="g"
+                android:src="@drawable/hana" />
+
+            <ImageButton
+                android:id="@+id/heart2"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="h"
+                android:src="@drawable/heart2" />
+
+
+            <ImageButton
+                android:id="@+id/yukipurple_new"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="i"
+                android:src="@drawable/yukipurple_new" />
+
+            <ImageButton
+                android:id="@+id/borderorange"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="j"
+                android:src="@drawable/borderorange" />
+
+            <ImageButton
+                android:id="@+id/dottoao"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="k"
+                android:src="@drawable/dottoao" />
+
+            <ImageButton
+                android:id="@+id/dottopureple"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="l"
+                android:src="@drawable/dottopureple" />
+
+            <ImageButton
+                android:id="@+id/pinkborder"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="m"
+                android:src="@drawable/pinkborder" />
+
+            <ImageButton
+                android:id="@+id/pinkdotto"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="n"
+                android:src="@drawable/pinkdotto" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</RelativeLayout>

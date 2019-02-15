@@ -1,0 +1,183 @@
+package com.example.nanaka.smily;
+
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class SubActivity extends Activity implements View.OnClickListener {
+    ScrollView scrollView;
+    LinearLayout linearLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sub);
+        //全体のキャプチャ
+        ImageButton captureAll = (ImageButton) findViewById(R.id.capture_all);
+        captureAll.setOnClickListener(this);
+        // ImageViewの設定
+        ImageView img = (ImageView) findViewById(R.id.img);
+        ImageView top = (ImageView) findViewById(R.id.top);
+        // ImageButtonの設定
+        ImageButton migi = (ImageButton) findViewById(R.id.right);
+        ImageButton hidari = (ImageButton) findViewById(R.id.left);
+        ImageButton a = (ImageButton) findViewById(R.id.borderred);
+        ImageButton b = (ImageButton) findViewById(R.id.dotaka);
+        ImageButton c = (ImageButton) findViewById(R.id.guradeblue);
+        ImageButton d = (ImageButton) findViewById(R.id.guradegreen);
+        ImageButton e = (ImageButton) findViewById(R.id.guradeorenji);
+        ImageButton f = (ImageButton) findViewById(R.id.guradepink);
+        ImageButton g = (ImageButton) findViewById(R.id.hana);
+        ImageButton h = (ImageButton) findViewById(R.id.heart2);
+        ImageButton i = (ImageButton) findViewById(R.id.yukipurple_new);
+        ImageButton j = (ImageButton) findViewById(R.id.borderorange);
+        ImageButton k = (ImageButton) findViewById(R.id.dottoao);
+        ImageButton l = (ImageButton) findViewById(R.id.dottopureple);
+        ImageButton m = (ImageButton) findViewById(R.id.pinkborder);
+        ImageButton n = (ImageButton) findViewById(R.id.pinkdotto);
+    }
+
+    @Override
+    public void onClick(View v){
+        Log.v("nana","onClick");
+        String saveDir = Environment.getExternalStorageDirectory().getPath() + "/jpg";
+        // SD カードフォルダを取得
+        File file = new File(saveDir);
+        // フォルダ作成
+        if (!file.exists()) {
+            if (!file.mkdir()) {
+                Log.e("Debug", "Make Dir Error");
+            }
+        }
+        // 画像保存パス
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String imgPath = saveDir + "/" + sf.format(cal.getTime()) + ".jpg";
+        // キャプチャを撮る
+        Bitmap capture = getViewCapture(findViewById(android.R.id.content));
+        // ファイル保存
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(imgPath, true);
+            // 画像のフォーマットと画質と出力先を指定して保存
+            capture.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+            // アンドロイドのデータベースへ登録
+            // (登録しないとギャラリーなどにすぐに反映されないため)
+            registAndroidDB(imgPath);
+        } catch (Exception e) {
+            Log.e("Debug", e.getMessage());
+        }
+    }
+    private void registAndroidDB(String path) {
+        // アンドロイドのデータベースへ登録
+        // (登録しないとギャラリーなどにすぐに反映されないため)
+        ContentValues values = new ContentValues();
+        ContentResolver contentResolver = this.getContentResolver();
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        values.put("_data", path);
+        contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+    }
+    public Bitmap getViewCapture(View view) {
+        view.setDrawingCacheEnabled(true);
+        // Viewのキャプチャを取得
+        Bitmap cache = view.getDrawingCache();
+        Bitmap screenShot = Bitmap.createBitmap(cache);
+        view.setDrawingCacheEnabled(false);
+        return screenShot;
+    }
+
+    public void migi(View v){
+        ((ImageView)
+                findViewById(R.id.top)).setImageResource(R.drawable.migite);
+    }
+    public void hidari(View v){
+        ((ImageView)
+                findViewById(R.id.top)).setImageResource(R.drawable.hidarite);
+    }
+    public void a(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.borderred);
+    }
+
+    public void b(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.dotaka);
+    }
+
+    public void c(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.guradeblue);
+    }
+
+    public void d(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.guradegreen);
+    }
+
+    public void e(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.guradeorenji);
+    }
+
+    public void f(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.guradepink);
+    }
+
+    public void g(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.hana);
+    }
+
+    public void h(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.heart2);
+    }
+
+    public void i(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.yukipurple_new);
+    }
+
+    public void j(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.borderorange);
+    }
+
+    public void k(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.dottoao);
+    }
+
+    public void l(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.dottopureple);
+    }
+
+    public void m(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.pinkborder);
+    }
+
+    public void n(View v) {
+        ((ImageView)
+                findViewById(R.id.img)).setImageResource(R.drawable.pinkdotto);
+    }
+}
+
